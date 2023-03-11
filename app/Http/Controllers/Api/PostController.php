@@ -9,10 +9,26 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::all();
+        $posts = Post::with('type', 'technologies')->paginate(8);
         return response()->json([
             'success'=>true,
             'results'=>$posts
         ]);
+    }
+    public function show($slug){
+        $post = Post::with('type', 'technologies')->where('slug', $slug)->first();
+
+        if($post){
+            return response()->json([
+                'success' => true,
+                'result' => $post
+            ]);
+        }
+        else{
+            return response()->json([
+                'success' => false, 
+                'error' => 'nessun post trovato'
+            ]);
+        }
     }
 }
