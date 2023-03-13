@@ -21,7 +21,7 @@ class PostController extends Controller
         if($post){
             return response()->json([
                 'success' => true,
-                'result' => $post
+                'post' => $post
             ]);
         }
         else{
