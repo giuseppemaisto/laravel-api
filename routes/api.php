@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\PostController;
 
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{slug}', [PostController::class, 'show']);
+Route::post('/contacts',[]);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
