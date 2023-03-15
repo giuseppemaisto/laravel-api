@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\GuestLead;
+use App\Mail\GuestContact;
+
 class GuestLeadController extends Controller
 {
     public function store(Request $request){
@@ -29,8 +32,8 @@ class GuestLeadController extends Controller
             ]);
         }
         //va avanti
-        $newContact = new GuestContact();
-        $newContact->fill($newContact);
+        $newContact = new GuestLead();
+        $newContact->fill($form_data);
 
         $newContact->save();
 
